@@ -17,6 +17,25 @@ class _HomeState extends State<Home> {
     "Peaches",
   ];
 
+  void _showDialog() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              backgroundColor: Colors.indigo[100],
+              title: Text('Todo List'),
+              content: Text('A new task have been added'),
+              actions: [
+                MaterialButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('OK'),
+                ),
+              ]);
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -41,7 +60,7 @@ class _HomeState extends State<Home> {
         ),
       ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: () => debugPrint("FB Button"),
+        onPressed: _showDialog,
         child: new Icon(Icons.add),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
