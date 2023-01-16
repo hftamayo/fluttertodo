@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
         context: context,
         builder: (context) {
           return AlertDialog(
-              backgroundColor: Colors.indigo[100],
+              backgroundColor: Colors.yellow,
               title: Text('Todo List'),
               content: Text('A new task have been added'),
               actions: [
