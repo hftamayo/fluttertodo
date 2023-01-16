@@ -8,14 +8,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<String> listof = [
-    "Apple",
-    "Orange",
-    "Banana",
-    "Watermelon",
-    "Grapes",
-    "Peaches",
-  ];
+  final List<String> listData = [];
 
   void _showDialog() {
     showDialog(
@@ -55,8 +48,8 @@ class _HomeState extends State<Home> {
       ),
       body: new Container(
         child: new ListView.builder(
-          itemBuilder: (_, int index) => listDataItem(this.listof[index]),
-          itemCount: this.listof.length,
+          itemBuilder: (_, int index) => listDataItem(this.listData[index]),
+          itemCount: this.listData.length,
         ),
       ),
       floatingActionButton: new FloatingActionButton(
