@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertodo/models/task.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -8,7 +9,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<String> listData = [];
+  final List<Task> listData = [];
+
+  void addTask(Task task) {
+    setState(() {
+      listData.add(task);
+    });
+  }
 
   void _showDialog() {
     showDialog(
