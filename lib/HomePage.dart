@@ -13,7 +13,8 @@ class _HomeState extends State<Home> {
     "Orange",
     "Banana",
     "Watermelon",
-    "Grapes"
+    "Grapes",
+    "Peaches",
   ];
 
   @override
@@ -24,7 +25,7 @@ class _HomeState extends State<Home> {
           "ToDo List",
           style: new TextStyle(fontSize: 19.0),
         ),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.indigo,
         actions: <Widget>[
           new IconButton(
               icon: new Icon(Icons.add), onPressed: () => debugPrint("Add")),
@@ -42,7 +43,7 @@ class _HomeState extends State<Home> {
       floatingActionButton: new FloatingActionButton(
         onPressed: () => debugPrint("FB Button"),
         child: new Icon(Icons.add),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
     );
@@ -64,7 +65,7 @@ class listDataItem extends StatelessWidget {
             children: <Widget>[
               new CircleAvatar(
                 child: new Text(itemName[0]),
-                backgroundColor: Colors.deepPurple,
+                backgroundColor: Colors.indigo,
                 foregroundColor: Colors.white,
               ),
               new Padding(padding: EdgeInsets.all(8.0)),
