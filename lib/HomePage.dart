@@ -39,6 +39,12 @@ class _HomeState extends State<Home> {
           itemCount: this.listof.length,
         ),
       ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: () => debugPrint("FB Button"),
+        child: new Icon(Icons.add),
+        backgroundColor: Colors.deepPurple,
+        foregroundColor: Colors.white,
+      ),
     );
   }
 }
@@ -50,18 +56,24 @@ class listDataItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Card(
+        elevation: 7.0,
         child: new Container(
-      child: new Row(
-        children: <Widget>[
-          new CircleAvatar(
-            child: new Text(itemName[0]),
+          margin: EdgeInsets.all(7.0),
+          padding: EdgeInsets.all(6.0),
+          child: new Row(
+            children: <Widget>[
+              new CircleAvatar(
+                child: new Text(itemName[0]),
+                backgroundColor: Colors.deepPurple,
+                foregroundColor: Colors.white,
+              ),
+              new Padding(padding: EdgeInsets.all(8.0)),
+              new Text(
+                itemName,
+                style: TextStyle(fontSize: 20.0),
+              )
+            ],
           ),
-          new Text(
-            itemName,
-            style: TextStyle(fontSize: 20.0),
-          )
-        ],
-      ),
-    ));
+        ));
   }
 }
