@@ -55,7 +55,28 @@ class _HomeState extends State<Home> {
       ),
       body: new Container(
         child: new ListView.builder(
-          itemBuilder: (_, int index) => listDataItem(this.listData[index]),
+          itemBuilder: (_, int index) {
+            return Card(
+              margin: EdgeInsets.all(4),
+              elevation: 8,
+              child: ListTile(
+                title: Text(
+                  listData[index].title,
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Colors.indigo,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                subtitle: Text(
+                  listData[index].body,
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            );
+          },
           itemCount: this.listData.length,
         ),
       ),
@@ -66,34 +87,5 @@ class _HomeState extends State<Home> {
         foregroundColor: Colors.white,
       ),
     );
-  }
-}
-
-class listDataItem extends StatelessWidget {
-  String itemName;
-  listDataItem(this.itemName);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Card(
-        elevation: 7.0,
-        child: new Container(
-          margin: EdgeInsets.all(7.0),
-          padding: EdgeInsets.all(6.0),
-          child: new Row(
-            children: <Widget>[
-              new CircleAvatar(
-                child: new Text(itemName[0]),
-                backgroundColor: Colors.indigo,
-                foregroundColor: Colors.white,
-              ),
-              new Padding(padding: EdgeInsets.all(8.0)),
-              new Text(
-                itemName,
-                style: TextStyle(fontSize: 20.0),
-              )
-            ],
-          ),
-        ));
   }
 }
