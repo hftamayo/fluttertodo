@@ -11,9 +11,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final List<Task> listData = [];
 
-  void addTask(Task task) {
+  void _addTask() {
+    Task task = new Task();
     setState(() {
       listData.add(task);
+      _showDialog();
     });
   }
 
@@ -81,7 +83,7 @@ class _HomeState extends State<Home> {
         ),
       ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: _showDialog,
+        onPressed: () => _addTask(),
         child: new Icon(Icons.add),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
