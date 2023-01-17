@@ -40,7 +40,7 @@ class _AddTaskState extends State<AddTask> {
         child: Column(
           children: [
             Text(
-              'Add Title',
+              'Add New Task',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 32,
@@ -53,7 +53,7 @@ class _AddTaskState extends State<AddTask> {
               onPressed: () {
                 final task = Task(titleController.text, bodyController.text);
                 widget.addTask(task);
-                Navigator.of(context).pop();
+                Navigator.pop(context);
               },
               child: Text('Add Task'),
             ),
