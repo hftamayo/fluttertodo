@@ -3,10 +3,12 @@ import 'package:fluttertodo/models/task.dart';
 
 class AddTask extends StatefulWidget {
   final Function(Task) addTask;
-  AddTask(this.addTask);
+  const AddTask(this.addTask, {super.key});
 
   @override
-  _AddTaskState createState() => _AddTaskState();
+  _AddTaskState createState() {
+    return _AddTaskState();
+  }
 }
 
 class _AddTaskState extends State<AddTask> {
@@ -14,11 +16,11 @@ class _AddTaskState extends State<AddTask> {
   Widget build(BuildContext context) {
     Widget buildTextField(String hint, TextEditingController controller) {
       return Container(
-        margin: EdgeInsets.all(4),
+        margin: const EdgeInsets.all(4),
         child: TextField(
           decoration: InputDecoration(
             labelText: hint,
-            border: OutlineInputBorder(
+            border: const OutlineInputBorder(
               borderSide: BorderSide(
                 color: Colors.black38,
               ),
@@ -33,13 +35,13 @@ class _AddTaskState extends State<AddTask> {
     var bodyController = TextEditingController();
 
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       height: 350,
       width: 400,
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Text(
+            const Text(
               'Add New Task',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -53,9 +55,9 @@ class _AddTaskState extends State<AddTask> {
               onPressed: () {
                 final task = Task(titleController.text, bodyController.text);
                 widget.addTask(task);
-                Navigator.pop(context);
+                Navigator.of(context).maybePop();
               },
-              child: Text('Add Task'),
+              child: const Text('Add Task'),
             ),
           ],
         ),
