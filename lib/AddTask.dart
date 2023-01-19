@@ -18,6 +18,15 @@ class _AddTaskState extends State<AddTask> {
   @override
   void initState() {
     super.initState();
+    titleController = TextEditingController();
+    bodyController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    bodyController.dispose();
+    super.dispose();
   }
 
   @override
