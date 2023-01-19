@@ -79,6 +79,7 @@ class _HomeState extends State<Home> {
         onPressed: () => _formAddTask(),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
+        child: const Icon(Icons.add),
       ),
     );
   }
