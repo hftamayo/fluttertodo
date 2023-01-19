@@ -35,51 +35,48 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
           "ToDo List",
-          style: new TextStyle(fontSize: 19.0),
+          style: TextStyle(fontSize: 19.0),
         ),
         backgroundColor: Colors.indigo,
         actions: <Widget>[
-          new IconButton(
-              icon: new Icon(Icons.add), onPressed: () => debugPrint("Add")),
-          new IconButton(
-              icon: new Icon(Icons.search),
+          IconButton(
+              icon: const Icon(Icons.add), onPressed: () => debugPrint("Add")),
+          IconButton(
+              icon: const Icon(Icons.search),
               onPressed: () => debugPrint("Search")),
         ],
       ),
-      body: new Container(
-        child: new ListView.builder(
-          itemBuilder: (_, int index) {
-            return Card(
-              margin: EdgeInsets.all(4),
-              elevation: 8,
-              child: ListTile(
-                title: Text(
-                  listData[index].title,
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.indigo,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                subtitle: Text(
-                  listData[index].body,
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
+      body: ListView.builder(
+        itemBuilder: (_, int index) {
+          return Card(
+            margin: const EdgeInsets.all(4),
+            elevation: 8,
+            child: ListTile(
+              title: Text(
+                listData[index].title,
+                style: const TextStyle(
+                  fontSize: 22,
+                  color: Colors.indigo,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            );
-          },
-          itemCount: this.listData.length,
-        ),
+              subtitle: Text(
+                listData[index].body,
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          );
+        },
+        itemCount: listData.length,
       ),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () => _formAddTask(),
-        child: new Icon(Icons.add),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
