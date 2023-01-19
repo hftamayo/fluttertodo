@@ -55,7 +55,7 @@ class _AddTaskState extends State<AddTask> {
               onPressed: () {
                 final task = Task(titleController.text, bodyController.text);
                 widget.addTask(task);
-                Navigator.of(context).maybePop();
+                Navigator.of(context).pop(task);
               },
               child: const Text('Add Task'),
             ),
