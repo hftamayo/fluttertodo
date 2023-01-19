@@ -12,8 +12,13 @@ class AddTask extends StatefulWidget {
 }
 
 class _AddTaskState extends State<AddTask> {
-  var titleController = TextEditingController();
-  var bodyController = TextEditingController();
+  late TextEditingController titleController;
+  late TextEditingController bodyController;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
