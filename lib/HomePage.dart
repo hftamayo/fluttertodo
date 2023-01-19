@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
+import 'package:fluttertodo/AddTask.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -11,31 +12,25 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final List<Task> listData = [];
 
-  void _addTask() {
-    Task task = new Task();
+  void addTask(Task task) {
     setState(() {
       listData.add(task);
-      _showDialog();
     });
   }
 
-  void _showDialog() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-              backgroundColor: Colors.yellow,
-              title: Text('Todo List'),
-              content: Text('A new task have been added'),
-              actions: [
-                MaterialButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('OK'),
-                ),
-              ]);
-        });
+  void _formAddTask() {
+    final task = showDialog(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          content: AddTask(addTask),
+        );
+      },
+    );
+    print('The task created was $task');
   }
 
   @override
@@ -83,7 +78,7 @@ class _HomeState extends State<Home> {
         ),
       ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: () => _addTask(),
+        onPressed: () => _formAddTask(),
         child: new Icon(Icons.add),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,

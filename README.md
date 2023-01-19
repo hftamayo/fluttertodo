@@ -16,3 +16,8 @@ Herbert Fernandez Tamayo: @hftamayo, hftamayo@gmail.com
 
 - 0.0.1: using of static data
 - 0.0.2: form form adding input data
+
+## Educational Resources:
+
+- [Use of ListView](https://www.youtube.com/watch?v=EqKNYSoNWJs)
+- [Adding a Task dinamically](https://www.youtube.com/watch?v=t3sRreruhYQ)
