@@ -12,6 +12,9 @@ class AddTask extends StatefulWidget {
 }
 
 class _AddTaskState extends State<AddTask> {
+  var titleController = TextEditingController();
+  var bodyController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Widget buildTextField(String hint, TextEditingController controller) {
@@ -30,9 +33,6 @@ class _AddTaskState extends State<AddTask> {
         ),
       );
     }
-
-    var titleController = TextEditingController();
-    var bodyController = TextEditingController();
 
     return Container(
       padding: const EdgeInsets.all(8),
