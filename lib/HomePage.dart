@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
   }
 
   void _formAddTask() {
-    showDialog(
+    final task = showDialog(
       context: context,
       builder: (_) {
         return AlertDialog(
@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
         );
       },
     );
+    print('The task created was $task');
   }
 
   @override
