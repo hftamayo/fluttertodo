@@ -15,7 +15,6 @@ class _HomeState extends State<Home> {
   void addTask(Task task) {
     setState(() {
       listData.add(task);
-      _showDialog();
     });
   }
 
@@ -31,25 +30,6 @@ class _HomeState extends State<Home> {
         );
       },
     );
-  }
-
-  void _showDialog() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-              backgroundColor: Colors.yellow,
-              title: Text('Todo List'),
-              content: Text('A new task have been added'),
-              actions: [
-                MaterialButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('OK'),
-                ),
-              ]);
-        });
   }
 
   @override
