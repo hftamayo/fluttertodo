@@ -70,6 +70,10 @@ class _AddTaskState extends State<AddTask> {
                 final task = Task(titleController.text, bodyController.text);
                 widget.addTask(task);
                 Navigator.of(context).pop<Task>(task);
+                var snackBar = const SnackBar(content: Text('New Task Added'));
+                if (task != null) {
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
               },
               child: const Text('Add Task'),
             ),
