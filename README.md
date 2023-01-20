@@ -21,3 +21,5 @@ Herbert Fernandez Tamayo: @hftamayo, hftamayo@gmail.com
 
 - [Use of ListView](https://www.youtube.com/watch?v=EqKNYSoNWJs)
 - [Adding a Task dinamically](https://www.youtube.com/watch?v=t3sRreruhYQ)
+- [Flutter Dynamic List](https://github.com/JahangirJadi/Flutter-Dynamic-List/tree/master/lib)
+- [Learn with Jadi](https://www.youtube.com/@JahangirJadi/videos)
