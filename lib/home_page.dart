@@ -30,7 +30,6 @@ class _HomeState extends State<Home> {
         );
       },
     );
-    print('The task created was $task');
   }
 
   @override
@@ -76,7 +75,9 @@ class _HomeState extends State<Home> {
         itemCount: listData.length,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _formAddTask(),
+        onPressed: () {
+          _formAddTask();
+        },
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
         child: const Icon(Icons.add),
