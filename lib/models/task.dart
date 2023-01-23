@@ -2,7 +2,7 @@ class Task {
   final String title;
   final String body;
 
-  Task({required this.title, required this.body});
+  Task(this.title, this.body);
 
   toJSONEncodable() {
     Map<String, dynamic> mappedTask = new Map();
