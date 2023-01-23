@@ -15,6 +15,16 @@ class _AddTaskState extends State<AddTask> {
   late TextEditingController titleController;
   late TextEditingController bodyController;
 
+  void _onSave() {
+    final task = Task(titleController.text, bodyController.text);
+    widget.addTask(task);
+    Navigator.of(context).pop<Task>(task);
+    var snackBar = const SnackBar(content: Text('New Task Added'));
+    if (task != null) {
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -66,15 +76,7 @@ class _AddTaskState extends State<AddTask> {
             buildTextField('Title', titleController),
             buildTextField('Body', bodyController),
             ElevatedButton(
-              onPressed: () {
-                final task = Task(titleController.text, bodyController.text);
-                widget.addTask(task);
-                Navigator.of(context).pop<Task>(task);
-                var snackBar = const SnackBar(content: Text('New Task Added'));
-                if (task != null) {
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                }
-              },
+              onPressed: _onSave,
               child: const Text('Add Task'),
             ),
           ],
