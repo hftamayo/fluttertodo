@@ -5,7 +5,7 @@ class Task {
   Task(this.title, this.body);
 
   toJSONEncodable() {
-    Map<String, dynamic> mappedTask = new Map();
+    Map<String, dynamic> mappedTask = {};
 
     mappedTask['title'] = title;
     mappedTask['body'] = body;
