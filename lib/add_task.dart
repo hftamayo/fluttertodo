@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
+import 'package:localstorage/localstorage.dart';
 
 class AddTask extends StatefulWidget {
   final Function(Task) addTask;
@@ -14,9 +15,11 @@ class AddTask extends StatefulWidget {
 class _AddTaskState extends State<AddTask> {
   late TextEditingController titleController;
   late TextEditingController bodyController;
+  final LocalStorage storage = LocalStorage('fluttertodo');
 
   void _onSave() {
     final task = Task(titleController.text, bodyController.text);
+    storage.setItem('todos', task.toJSONEncodable());
     widget.addTask(task);
     Navigator.of(context).pop<Task>(task);
     var snackBar = const SnackBar(content: Text('New Task Added'));
