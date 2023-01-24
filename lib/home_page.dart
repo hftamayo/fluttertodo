@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
+import 'package:fluttertodo/models/todo_list.dart';
 import 'package:fluttertodo/add_task.dart';
 import 'package:localstorage/localstorage.dart';
 
@@ -12,6 +13,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final List<Task> listData = [];
+  final TodoList list = TodoList();
   final LocalStorage storage = LocalStorage('fluttertodo');
 
   void addTask(Task task) {
@@ -21,7 +23,9 @@ class _HomeState extends State<Home> {
   }
 
   void _loadStore() {
-    listData.items = storage.getItem('fluttertodo') ?? [];
+    setState(() {
+      list.items = storage.getItem('fluttertodo') ?? [];
+    });
   }
 
   void _formAddTask() {
