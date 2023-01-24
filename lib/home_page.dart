@@ -12,13 +12,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<Task> listData = [];
+  // final List<Task> listData = [];
   final TodoList list = TodoList();
   final LocalStorage storage = LocalStorage('fluttertodo');
 
   void addTask(Task task) {
     setState(() {
-      listData.add(task);
+      // listData.add(task);
+      list.items.add(task);
+      storage.setItem('todos', list.toJSONEncodable());
+      // _taskList();
     });
   }
 
@@ -27,6 +30,16 @@ class _HomeState extends State<Home> {
       list.items = storage.getItem('fluttertodo') ?? [];
     });
   }
+
+  // void _taskList() {
+  //   if (list.items != null) {
+  //     list.items = List<Task>.from(
+  //       list.items.map(
+  //         (item) => Task(item['title'] item['body']),
+  //       ),
+  //     );
+  //   }
+  // }
 
   void _formAddTask() {
     final task = showDialog(
@@ -78,7 +91,7 @@ class _HomeState extends State<Home> {
             elevation: 8,
             child: ListTile(
               title: Text(
-                listData[index].title,
+                list.items[index].title,
                 style: const TextStyle(
                   fontSize: 22,
                   color: Colors.indigo,
@@ -86,7 +99,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
               subtitle: Text(
-                listData[index].body,
+                list.items[index].body,
                 style: const TextStyle(
                   fontSize: 18,
                 ),
@@ -94,7 +107,7 @@ class _HomeState extends State<Home> {
             ),
           );
         },
-        itemCount: listData.length,
+        itemCount: list.items.length,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
