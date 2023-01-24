@@ -12,11 +12,16 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final List<Task> listData = [];
+  final LocalStorage storage = LocalStorage('fluttertodo');
 
   void addTask(Task task) {
     setState(() {
       listData.add(task);
     });
+  }
+
+  void _loadStore() {
+    listData.items = storage.getItem('fluttertodo') ?? [];
   }
 
   void _formAddTask() {
@@ -31,6 +36,18 @@ class _HomeState extends State<Home> {
         );
       },
     );
+  }
+
+  @override
+  void initState() {
+    _loadStore();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+/*     _store.close(); */
+    super.dispose();
   }
 
   @override
