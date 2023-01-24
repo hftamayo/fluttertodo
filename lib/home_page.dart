@@ -12,15 +12,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // final List<Task> listData = [];
   final TodoList list = TodoList();
   final LocalStorage storage = LocalStorage('fluttertodo');
 
   void addTask(Task task) {
     setState(() {
-      // listData.add(task);
       list.items.add(task);
-      storage.setItem('todos', list.toJSONEncodable());
+      storage.setItem('fluttertodo', list.toJSONEncodable());
       // _taskList();
     });
   }
