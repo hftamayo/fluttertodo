@@ -1,1 +1,2 @@
-const String flutterTodoStorage = "fluttertodo";
+const String flutterTodoStorageName = "fluttertodov1";
+const String tasksStorageKey = "tasks";
