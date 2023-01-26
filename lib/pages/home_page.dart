@@ -17,19 +17,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final TodoList list = TodoList();
-  final LocalStorage storage = LocalStorage(constants.flutterTodoStorage);
+  final LocalStorage storage = LocalStorage(constants.flutterTodoStorageName);
 
   void addTask(Task task) {
     setState(() {
       list.items.add(task);
-      storage.setItem(constants.flutterTodoStorage, list.toJSONEncodable());
+      storage.setItem(constants.flutterTodoStorageName, list.toJSONEncodable());
       // _taskList();
     });
   }
 
   void _loadStore() {
     setState(() {
-      list.items = storage.getItem(constants.flutterTodoStorage) ?? [];
+      list.items = storage.getItem(constants.flutterTodoStorageName) ?? [];
     });
   }
 
