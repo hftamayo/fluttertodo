@@ -22,7 +22,8 @@ class MainBar extends StatelessWidget implements PreferredSizeWidget {
       titleTextStyle: const TextStyle(fontSize: 19.0),
       actions: <Widget>[
         IconButton(
-            icon: const Icon(Icons.add), onPressed: () => debugPrint("Add")),
+            icon: const Icon(Icons.notifications),
+            onPressed: () => debugPrint("Add")),
         IconButton(
             icon: const Icon(Icons.search),
             onPressed: () => debugPrint("Search")),
