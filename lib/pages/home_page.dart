@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
 import 'package:fluttertodo/models/todo_list.dart';
-import 'package:fluttertodo/add_task.dart';
+import 'package:fluttertodo/widgets/add_task_widget.dart';
 import 'package:localstorage/localstorage.dart';
 
 class Home extends StatefulWidget {
