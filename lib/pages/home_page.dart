@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
 import 'package:fluttertodo/models/todo_list.dart';
+import 'package:fluttertodo/widgets/mainbar_widget.dart';
 import 'package:fluttertodo/widgets/add_task_widget.dart';
 import 'package:fluttertodo/assets/constants.dart' as constants;
 import 'package:localstorage/localstorage.dart';
@@ -69,19 +70,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "ToDo List",
-          style: TextStyle(fontSize: 19.0),
-        ),
+      appBar: const MainBar(
         backgroundColor: Colors.indigo,
-        actions: <Widget>[
-          IconButton(
-              icon: const Icon(Icons.add), onPressed: () => debugPrint("Add")),
-          IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () => debugPrint("Search")),
-        ],
+        title: 'Flutter Todo V1',
       ),
       body: ListView.builder(
         itemBuilder: (_, int index) {
