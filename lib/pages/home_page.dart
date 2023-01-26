@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
 import 'package:fluttertodo/models/todo_list.dart';
 import 'package:fluttertodo/widgets/add_task_widget.dart';
+import 'package:fluttertodo/assets/constants.dart' as constants;
 import 'package:localstorage/localstorage.dart';
 
 class Home extends StatefulWidget {
@@ -13,19 +14,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final TodoList list = TodoList();
-  final LocalStorage storage = LocalStorage('fluttertodo');
+  final LocalStorage storage = LocalStorage(constants.flutterTodoStorage);
 
   void addTask(Task task) {
     setState(() {
       list.items.add(task);
-      storage.setItem('fluttertodo', list.toJSONEncodable());
+      storage.setItem(constants.flutterTodoStorage, list.toJSONEncodable());
       // _taskList();
     });
   }
 
   void _loadStore() {
     setState(() {
-      list.items = storage.getItem('fluttertodo') ?? [];
+      list.items = storage.getItem(constants.flutterTodoStorage) ?? [];
     });
   }
 
