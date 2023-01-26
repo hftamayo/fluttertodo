@@ -78,14 +78,6 @@ class _HomeState extends State<Home> {
       ),
       body: DisplayTasks(list: list),
       floatingActionButton: ButtonAddTask(onPressed: _formAddTask),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     _formAddTask();
-      //   },
-      //   backgroundColor: Colors.indigo,
-      //   foregroundColor: Colors.white,
-      //   child: const Icon(Icons.add),
-      // ),
     );
   }
 }
