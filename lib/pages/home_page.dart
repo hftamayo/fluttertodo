@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
 import 'package:fluttertodo/models/todo_list.dart';
 import 'package:fluttertodo/widgets/mainbar_widget.dart';
+import 'package:fluttertodo/widgets/display_tasks_widget.dart';
 import 'package:fluttertodo/widgets/add_task_widget.dart';
 import 'package:fluttertodo/assets/constants.dart' as constants;
 import 'package:localstorage/localstorage.dart';
@@ -74,31 +75,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.indigo,
         title: 'Flutter Todo V1',
       ),
-      body: ListView.builder(
-        itemBuilder: (_, int index) {
-          return Card(
-            margin: const EdgeInsets.all(4),
-            elevation: 8,
-            child: ListTile(
-              title: Text(
-                list.items[index].title,
-                style: const TextStyle(
-                  fontSize: 22,
-                  color: Colors.indigo,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              subtitle: Text(
-                list.items[index].body,
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-            ),
-          );
-        },
-        itemCount: list.items.length,
-      ),
+      body: DisplayTasks(list: list),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _formAddTask();
