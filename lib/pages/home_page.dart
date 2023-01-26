@@ -4,7 +4,7 @@ import 'package:fluttertodo/models/todo_list.dart';
 import 'package:fluttertodo/widgets/mainbar_widget.dart';
 import 'package:fluttertodo/widgets/display_tasks_widget.dart';
 import 'package:fluttertodo/widgets/new_task_button_widget.dart';
-import 'package:fluttertodo/widgets/add_task_widget.dart';
+import 'package:fluttertodo/widgets/add_task_form_widget.dart';
 import 'package:fluttertodo/assets/constants.dart' as constants;
 import 'package:localstorage/localstorage.dart';
 
