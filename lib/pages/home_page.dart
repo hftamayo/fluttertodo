@@ -3,6 +3,7 @@ import 'package:fluttertodo/models/task.dart';
 import 'package:fluttertodo/models/todo_list.dart';
 import 'package:fluttertodo/widgets/mainbar_widget.dart';
 import 'package:fluttertodo/widgets/display_tasks_widget.dart';
+import 'package:fluttertodo/widgets/new_task_button_widget.dart';
 import 'package:fluttertodo/widgets/add_task_widget.dart';
 import 'package:fluttertodo/assets/constants.dart' as constants;
 import 'package:localstorage/localstorage.dart';
@@ -76,14 +77,15 @@ class _HomeState extends State<Home> {
         title: 'Flutter Todo V1',
       ),
       body: DisplayTasks(list: list),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _formAddTask();
-        },
-        backgroundColor: Colors.indigo,
-        foregroundColor: Colors.white,
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: ButtonAddTask(onPressed: _formAddTask),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     _formAddTask();
+      //   },
+      //   backgroundColor: Colors.indigo,
+      //   foregroundColor: Colors.white,
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 }
