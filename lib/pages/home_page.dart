@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
 import 'package:fluttertodo/models/task_list.dart';
@@ -29,6 +31,18 @@ class _HomeState extends State<Home> {
 
   getListOfTasks() async {
     if (storage != null) {
+      List<dynamic>? storedTasks =
+          await storage?.getItem(constants.tasksStorageKey);
+      if (storedTasks != null) {
+        print("number of tasks: ${list.items.length}");
+        // list =
+        //     storedTasks.map((task) => TaskList().toJSONEncodable()) as TaskList;
+      } else {
+        print("the list is empty");
+        // list = [] as TaskList;
+      }
+      //return list;
+
       // List<dynamic>? storedTasks =
       //     await storage?.getItem(constants.tasksStorageKey);
       // if (storedTasks != null) {
@@ -40,7 +54,7 @@ class _HomeState extends State<Home> {
       //   list =
       //       storedTasks.map((task) => TodoList().toJSONEncodable()) as TodoList;
       // }
-      print("number of tasks: ${list.items.length}");
+
     }
     //stable  setState(() {
     //   list.items = storage.getItem(constants.flutterTodoStorageName) ?? [];
