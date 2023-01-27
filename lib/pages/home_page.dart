@@ -27,7 +27,13 @@ class _HomeState extends State<Home> {
     });
   }
 
-  void _loadStore() {
+  Future _loadStore() async {
+    if (storage != null) {
+      return list;
+    }
+    storage = LocalStorage(constants.flutterTodoStorageName);
+    await storage!.ready;
+
     // setState(() {
     //   list.items = storage.getItem(constants.flutterTodoStorageName) ?? [];
     // });
