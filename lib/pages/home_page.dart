@@ -16,8 +16,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final TodoList list = TodoList();
-  final LocalStorage storage = LocalStorage(constants.flutterTodoStorageName);
+  late TodoList list = TodoList();
+  LocalStorage? storage;
 
   void addTask(Task task) {
     setState(() {
@@ -28,9 +28,9 @@ class _HomeState extends State<Home> {
   }
 
   void _loadStore() {
-    setState(() {
-      list.items = storage.getItem(constants.flutterTodoStorageName) ?? [];
-    });
+    // setState(() {
+    //   list.items = storage.getItem(constants.flutterTodoStorageName) ?? [];
+    // });
   }
 
   // void _taskList() {
