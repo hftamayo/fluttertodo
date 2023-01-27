@@ -1,3 +1,5 @@
+import 'dart:convert'; //json operations
+
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
 import 'package:fluttertodo/models/todo_list.dart';
@@ -35,18 +37,21 @@ class _HomeState extends State<Home> {
     storage = LocalStorage(constants.flutterTodoStorageName);
     await storage!.ready;
 
-    List<dynamic>? storedTasks =
-        await storage?.getItem(constants.tasksStorageKey);
-    if (storedTasks != null) {
-      list =
-          storedTasks.map((task) => TodoList().toJSONEncodable()) as TodoList;
-    } else {
-      list = [] as TodoList;
+    if (storage != null) {
+      list = json.decode(storage?.getItem(constants.tasksStorageKey));
     }
-    return list;
-    // setState(() {
+    //stable  setState(() {
     //   list.items = storage.getItem(constants.flutterTodoStorageName) ?? [];
     // });
+
+    //unstable List<dynamic>? storedTasks =
+    //     await storage?.getItem(constants.tasksStorageKey);
+    // if (storedTasks != null) {
+    //   list = storedTasks.map((task) => TodoList().toJSONEncodable()) as TodoList;
+    // } else {
+    //   list = [] as TodoList;
+    // }
+    // return list;
   }
 
   // void _taskList() {
