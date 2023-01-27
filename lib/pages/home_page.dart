@@ -36,7 +36,8 @@ class _HomeState extends State<Home> {
       if (storedTasks != null) {
         print("number of tasks: ${storedTasks.length}");
       } else {
-        list = [] as TodoList;
+        print("the list is empty");
+        // list = [] as TodoList;
       }
       // list = json.decode(storage?.getItem(constants.tasksStorageKey));
     }
