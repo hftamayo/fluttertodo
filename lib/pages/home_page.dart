@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
 import 'package:fluttertodo/models/task_list.dart';
@@ -40,30 +38,10 @@ class _HomeState extends State<Home> {
           ),
         );
         print("number of tasks: ${storedTasks.length}");
-        // list =
-        //     storedTasks.map((task) => TaskList().toJSONEncodable()) as TaskList;
       } else {
         print("the list is empty");
-        // list = [] as TaskList;
       }
-      //return list;
-
-      // List<dynamic>? storedTasks =
-      //     await storage?.getItem(constants.tasksStorageKey);
-      // if (storedTasks != null) {
-      //   list = storedTasks.map((task) => TaskList()) as TaskList;
-      // }
-      // List<dynamic>? storedTasks =
-      //     await storage?.getItem(constants.tasksStorageKey);
-      // if (storedTasks != null) {
-      //   list =
-      //       storedTasks.map((task) => TodoList().toJSONEncodable()) as TodoList;
-      // }
-
     }
-    //stable  setState(() {
-    //   list.items = storage.getItem(constants.flutterTodoStorageName) ?? [];
-    // });
 
     //unstable List<dynamic>? storedTasks =
     //     await storage?.getItem(constants.tasksStorageKey);
@@ -74,16 +52,6 @@ class _HomeState extends State<Home> {
     // }
     // return list;
   }
-
-  // void _taskList() {
-  //   if (list.items != null) {
-  //     list.items = List<Task>.from(
-  //       list.items.map(
-  //         (item) => Task(item['title'] item['body']),
-  //       ),
-  //     );
-  //   }
-  // }
 
   void addTask(Task task) {
     setState(() {
