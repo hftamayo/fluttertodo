@@ -1,5 +1,3 @@
-import 'dart:convert'; //json operations
-
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
 import 'package:fluttertodo/models/todo_list.dart';
@@ -31,15 +29,8 @@ class _HomeState extends State<Home> {
 
   getListOfTasks() async {
     if (storage != null) {
-      List<dynamic>? storedTasks =
-          await storage?.getItem(constants.tasksStorageKey);
-      if (storedTasks != null) {
-        print("number of tasks: ${storedTasks.length}");
-      } else {
-        print("the list is empty");
-        // list = [] as TodoList;
-      }
-      // list = json.decode(storage?.getItem(constants.tasksStorageKey));
+      list.items = await storage?.getItem(constants.tasksStorageKey) ?? [];
+      print("number of tasks: ${list.items.length}");
     }
     //stable  setState(() {
     //   list.items = storage.getItem(constants.flutterTodoStorageName) ?? [];
