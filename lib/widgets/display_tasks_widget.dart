@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../models/todo_list.dart';
+import '../models/task_list.dart';
 
 class DisplayTasks extends StatelessWidget {
   const DisplayTasks({
@@ -8,7 +7,7 @@ class DisplayTasks extends StatelessWidget {
     required this.list,
   }) : super(key: key);
 
-  final TodoList list;
+  final TaskList list;
 
   @override
   Widget build(BuildContext context) {

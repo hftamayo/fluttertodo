@@ -1,6 +1,6 @@
 import 'package:fluttertodo/models/task.dart';
 
-class TodoList {
+class TaskList {
   List<Task> items = [];
 
   toJSONEncodable() {

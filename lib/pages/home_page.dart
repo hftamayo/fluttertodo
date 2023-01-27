@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
-import 'package:fluttertodo/models/todo_list.dart';
+import 'package:fluttertodo/models/task_list.dart';
 import 'package:fluttertodo/widgets/mainbar_widget.dart';
 import 'package:fluttertodo/widgets/display_tasks_widget.dart';
 import 'package:fluttertodo/widgets/new_task_button_widget.dart';
@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late TodoList list = TodoList();
+  late TaskList list = TaskList();
   LocalStorage? storage;
 
   Future _loadStore() async {
@@ -29,12 +29,17 @@ class _HomeState extends State<Home> {
 
   getListOfTasks() async {
     if (storage != null) {
-      List<dynamic>? storedTasks =
-          await storage?.getItem(constants.tasksStorageKey);
-      if (storedTasks != null) {
-        // list =
-        //     storedTasks.map((task) => TodoList().toJSONEncodable()) as TodoList;
-      }
+      // List<dynamic>? storedTasks =
+      //     await storage?.getItem(constants.tasksStorageKey);
+      // if (storedTasks != null) {
+      //   list = storedTasks.map((task) => TaskList()) as TaskList;
+      // }
+      // List<dynamic>? storedTasks =
+      //     await storage?.getItem(constants.tasksStorageKey);
+      // if (storedTasks != null) {
+      //   list =
+      //       storedTasks.map((task) => TodoList().toJSONEncodable()) as TodoList;
+      // }
       print("number of tasks: ${list.items.length}");
     }
     //stable  setState(() {
