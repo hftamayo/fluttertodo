@@ -21,24 +21,24 @@ class _HomeState extends State<Home> {
   late TodoList list = TodoList();
   LocalStorage? storage;
 
-  void addTask(Task task) {
-    setState(() {
-      list.items.add(task);
-      storage?.setItem(
-          constants.flutterTodoStorageName, list.toJSONEncodable());
-      // _taskList();
-    });
-  }
-
   Future _loadStore() async {
     if (storage != null) {
       return list;
     }
     storage = LocalStorage(constants.flutterTodoStorageName);
     await storage!.ready;
+  }
 
+  getListOfTasks() async {
     if (storage != null) {
-      list = json.decode(storage?.getItem(constants.tasksStorageKey));
+      List<dynamic>? storedTasks =
+          await storage?.getItem(constants.tasksStorageKey);
+      if (storedTasks != null) {
+        print("number of tasks: ${storedTasks.length}");
+      } else {
+        list = [] as TodoList;
+      }
+      // list = json.decode(storage?.getItem(constants.tasksStorageKey));
     }
     //stable  setState(() {
     //   list.items = storage.getItem(constants.flutterTodoStorageName) ?? [];
@@ -64,6 +64,15 @@ class _HomeState extends State<Home> {
   //   }
   // }
 
+  void addTask(Task task) {
+    setState(() {
+      list.items.add(task);
+      storage?.setItem(
+          constants.flutterTodoStorageName, list.toJSONEncodable());
+      // _taskList();
+    });
+  }
+
   void _formAddTask() {
     final task = showDialog(
       context: context,
@@ -81,6 +90,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     _loadStore();
+    getListOfTasks();
     super.initState();
   }
 
