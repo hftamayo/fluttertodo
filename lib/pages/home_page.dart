@@ -68,9 +68,8 @@ class _HomeState extends State<Home> {
   void addTask(Task task) {
     setState(() {
       list.items.add(task);
-      storage?.setItem(
-          constants.flutterTodoStorageName, list.toJSONEncodable());
-      // _taskList();
+      storage?.setItem(constants.tasksStorageKey, list.toJSONEncodable());
+      getListOfTasks();
     });
   }
 
