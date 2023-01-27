@@ -34,6 +34,15 @@ class _HomeState extends State<Home> {
     storage = LocalStorage(constants.flutterTodoStorageName);
     await storage!.ready;
 
+    List<dynamic>? storedTasks =
+        await storage?.getItem(constants.tasksStorageKey);
+    if (storedTasks != null) {
+      list =
+          storedTasks.map((task) => TodoList().toJSONEncodable()) as TodoList;
+    } else {
+      list = [] as TodoList;
+    }
+    return list;
     // setState(() {
     //   list.items = storage.getItem(constants.flutterTodoStorageName) ?? [];
     // });
