@@ -29,7 +29,12 @@ class _HomeState extends State<Home> {
 
   getListOfTasks() async {
     if (storage != null) {
-      list.items = await storage?.getItem(constants.tasksStorageKey) ?? [];
+      List<dynamic>? storedTasks =
+          await storage?.getItem(constants.tasksStorageKey);
+      if (storedTasks != null) {
+        list =
+            storedTasks.map((task) => TodoList().toJSONEncodable()) as TodoList;
+      }
       print("number of tasks: ${list.items.length}");
     }
     //stable  setState(() {
