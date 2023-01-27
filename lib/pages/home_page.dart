@@ -34,7 +34,12 @@ class _HomeState extends State<Home> {
       List<dynamic>? storedTasks =
           await storage?.getItem(constants.tasksStorageKey);
       if (storedTasks != null) {
-        print("number of tasks: ${list.items.length}");
+        list.items = List<Task>.from(
+          storedTasks.map(
+            (item) => Task(item['title'], item['body']),
+          ),
+        );
+        print("number of tasks: ${storedTasks.length}");
         // list =
         //     storedTasks.map((task) => TaskList().toJSONEncodable()) as TaskList;
       } else {
@@ -82,7 +87,7 @@ class _HomeState extends State<Home> {
 
   void addTask(Task task) {
     setState(() {
-      list.items.add(task);
+      // list.items.add(task);
       storage?.setItem(constants.tasksStorageKey, list.toJSONEncodable());
       getListOfTasks();
     });
