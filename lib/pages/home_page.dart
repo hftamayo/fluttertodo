@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.indigo,
         title: 'Flutter Todo V1',
       ),
-      body: DisplayTasks(list: list),
+      body: const DisplayTasks(),
       floatingActionButton: ButtonAddTask(onPressed: _formAddTask),
     );
   }
