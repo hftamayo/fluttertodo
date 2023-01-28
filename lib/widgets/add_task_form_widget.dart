@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
+import 'package:fluttertodo/provider/tasks_provider.dart';
 
 class AddTask extends StatefulWidget {
   final Function(Task) addTask;
@@ -14,6 +15,8 @@ class AddTask extends StatefulWidget {
 class _AddTaskState extends State<AddTask> {
   late TextEditingController titleController;
   late TextEditingController bodyController;
+  String newTitle = '';
+  String newBody = '';
 
   void _onSave() {
     final task = Task(titleController.text, bodyController.text);
@@ -28,8 +31,14 @@ class _AddTaskState extends State<AddTask> {
   @override
   void initState() {
     super.initState();
-    titleController = TextEditingController();
-    bodyController = TextEditingController();
+    // titleController = TextEditingController();
+    // bodyController = TextEditingController();
+    titleController.addListener(() {
+      newTitle = titleController.text;
+    });
+    bodyController.addListener(() {
+      newBody = bodyController.text;
+    });
   }
 
   @override
