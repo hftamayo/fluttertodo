@@ -7,6 +7,8 @@ import 'package:fluttertodo/widgets/new_task_button_widget.dart';
 import 'package:fluttertodo/widgets/add_task_form_widget.dart';
 import 'package:fluttertodo/assets/constants.dart' as constants;
 import 'package:localstorage/localstorage.dart';
+import 'package:provider/provider.dart';
+import 'package:fluttertodo/provider/tasks_provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,45 +21,45 @@ class _HomeState extends State<Home> {
   late TaskList list = TaskList();
   LocalStorage? storage;
 
-  Future _loadStore() async {
-    if (storage != null) {
-      return list;
-    }
-    storage = LocalStorage(constants.flutterTodoStorageName);
-    await storage!.ready;
-  }
+  // Future _loadStore() async {
+  //   if (storage != null) {
+  //     return list;
+  //   }
+  //   storage = LocalStorage(constants.flutterTodoStorageName);
+  //   await storage!.ready;
+  // }
 
-  getListOfTasks() async {
-    if (storage != null) {
-      List<dynamic>? storedTasks =
-          await storage?.getItem(constants.tasksStorageKey);
-      if (storedTasks != null) {
-        list.items = List<Task>.from(
-          storedTasks.map(
-            (item) => Task(item['title'], item['body']),
-          ),
-        );
-        print("number of tasks: ${storedTasks.length}");
-      } else {
-        print("the list is empty");
-      }
-    }
+  // getListOfTasks() async {
+  //   if (storage != null) {
+  //     List<dynamic>? storedTasks =
+  //         await storage?.getItem(constants.tasksStorageKey);
+  //     if (storedTasks != null) {
+  //       list.items = List<Task>.from(
+  //         storedTasks.map(
+  //           (item) => Task(item['title'], item['body']),
+  //         ),
+  //       );
+  //       print("number of tasks: ${storedTasks.length}");
+  //     } else {
+  //       print("the list is empty");
+  //     }
+  //   }
 
-    //unstable List<dynamic>? storedTasks =
-    //     await storage?.getItem(constants.tasksStorageKey);
-    // if (storedTasks != null) {
-    //   list = storedTasks.map((task) => TodoList().toJSONEncodable()) as TodoList;
-    // } else {
-    //   list = [] as TodoList;
-    // }
-    // return list;
-  }
+  //unstable List<dynamic>? storedTasks =
+  //     await storage?.getItem(constants.tasksStorageKey);
+  // if (storedTasks != null) {
+  //   list = storedTasks.map((task) => TodoList().toJSONEncodable()) as TodoList;
+  // } else {
+  //   list = [] as TodoList;
+  // }
+  // return list;
+  // }
 
   void addTask(Task task) {
     setState(() {
       // list.items.add(task);
       storage?.setItem(constants.tasksStorageKey, list.toJSONEncodable());
-      getListOfTasks();
+      Provider.of<TasksProvider>(context, listen: false).getListOfTasks();
     });
   }
 
@@ -77,8 +79,9 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    _loadStore();
-    getListOfTasks();
+    Provider.of<TasksProvider>(context, listen: false).loadStore();
+    // _loadStore();
+    Provider.of<TasksProvider>(context, listen: false).getListOfTasks();
     super.initState();
   }
 
