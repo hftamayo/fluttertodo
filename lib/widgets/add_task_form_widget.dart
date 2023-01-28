@@ -14,8 +14,11 @@ class AddTask extends StatefulWidget {
 }
 
 class _AddTaskState extends State<AddTask> {
-  late TextEditingController titleController;
-  late TextEditingController bodyController;
+  // late TextEditingController titleController;
+  // late TextEditingController bodyController;
+  final titleController = TextEditingController();
+  final bodyController = TextEditingController();
+
   String newTitle = '';
   String newBody = '';
 
