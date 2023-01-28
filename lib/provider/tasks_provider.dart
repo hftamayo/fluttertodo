@@ -7,7 +7,10 @@ import 'package:fluttertodo/assets/constants.dart' as constants;
 
 class TasksProvider with ChangeNotifier {
   late TaskList list = TaskList();
+  List<Task> _tasks = [];
   LocalStorage? storage;
+
+  UnmodifiableListView<Task> get allTasks => UnmodifiableListView(_tasks);
 
   @override
   void dispose() {
