@@ -20,12 +20,5 @@ class MyApp extends StatelessWidget {
         home: const Home(),
       ),
     );
-    // return MaterialApp(
-    //   title: 'MyShop',
-    //   theme: ThemeData(
-    //     primarySwatch: Colors.indigo,
-    //   ),
-    //   home: const Home(),
-    // );
   }
 }
