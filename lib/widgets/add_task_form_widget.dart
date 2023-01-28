@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
+import 'package:provider/provider.dart';
 import 'package:fluttertodo/provider/tasks_provider.dart';
 
 class AddTask extends StatefulWidget {
@@ -20,7 +21,8 @@ class _AddTaskState extends State<AddTask> {
 
   void _onSave() {
     final task = Task(titleController.text, bodyController.text);
-    widget.addTask(task);
+    Provider.of<TasksProvider>(context, listen: false).addTask(task);
+    // widget.addTask(task);
     Navigator.of(context).pop<Task>(task);
     var snackBar = const SnackBar(content: Text('New Task Added'));
     if (task != null) {
