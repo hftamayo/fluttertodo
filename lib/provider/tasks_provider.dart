@@ -12,18 +12,18 @@ class TasksProvider with ChangeNotifier {
 
   UnmodifiableListView<Task> get allTasks => UnmodifiableListView(_tasks);
 
-  @override
-  void dispose() {
-    storage?.dispose();
-    super.dispose();
-  }
-
-  Future _loadStore() async {
+  Future loadStore() async {
     if (storage != null) {
       return list;
     }
     storage = LocalStorage(constants.flutterTodoStorageName);
     await storage!.ready;
+  }
+
+  @override
+  void dispose() {
+    storage?.dispose();
+    super.dispose();
   }
 
   getListOfTasks() async {
