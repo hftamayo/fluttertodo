@@ -9,6 +9,12 @@ class TasksProvider with ChangeNotifier {
   late TaskList list = TaskList();
   LocalStorage? storage;
 
+  @override
+  void dispose() {
+    storage?.dispose();
+    super.dispose();
+  }
+
   Future _loadStore() async {
     if (storage != null) {
       return list;
@@ -27,6 +33,7 @@ class TasksProvider with ChangeNotifier {
             (item) => Task(item['title'], item['body']),
           ),
         );
+        notifyListeners();
         print("number of tasks: ${storedTasks.length}");
       } else {
         print("the list is empty");
