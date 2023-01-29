@@ -44,8 +44,13 @@ class TasksProvider with ChangeNotifier {
     }
   }
 
-  void addTask(Task task) {
-    // list.items.add(task);
+  // void addTask(Task task) {
+  //   // list.items.add(task);
+  //   storage?.setItem(constants.tasksStorageKey, list.toJSONEncodable());
+  //   notifyListeners();
+  // }
+
+  void saveTask() {
     storage?.setItem(constants.tasksStorageKey, list.toJSONEncodable());
     notifyListeners();
   }
