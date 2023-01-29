@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertodo/models/task.dart';
 import 'package:fluttertodo/models/task_list.dart';
 import 'package:fluttertodo/widgets/mainbar_widget.dart';
 import 'package:fluttertodo/widgets/display_tasks_widget.dart';
 import 'package:fluttertodo/widgets/new_task_button_widget.dart';
 import 'package:fluttertodo/widgets/add_task_form_widget.dart';
-import 'package:fluttertodo/assets/constants.dart' as constants;
-import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertodo/provider/tasks_provider.dart';
 
@@ -19,7 +16,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late TaskList list = TaskList();
-  LocalStorage? storage;
 
   // Future _loadStore() async {
   //   if (storage != null) {
