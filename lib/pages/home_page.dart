@@ -55,13 +55,13 @@ class _HomeState extends State<Home> {
   // return list;
   // }
 
-  void addTask(Task task) {
-    setState(() {
-      // list.items.add(task);
-      storage?.setItem(constants.tasksStorageKey, list.toJSONEncodable());
-      Provider.of<TasksProvider>(context, listen: false).getListOfTasks();
-    });
-  }
+  // void addTask(Task task) {
+  //   setState(() {
+  //     // list.items.add(task);
+  //     storage?.setItem(constants.tasksStorageKey, list.toJSONEncodable());
+  //     Provider.of<TasksProvider>(context, listen: false).getListOfTasks();
+  //   });
+  // }
 
   void _formAddTask() {
     final task = showDialog(
@@ -71,7 +71,7 @@ class _HomeState extends State<Home> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          content: AddTask(addTask),
+          content: const AddTask(),
         );
       },
     );
