@@ -4,8 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:fluttertodo/provider/tasks_provider.dart';
 
 class AddTask extends StatefulWidget {
-  final Function(Task) addTask;
-  const AddTask(this.addTask, {super.key});
+  // final Function(Task) addTask;
+  // const AddTask(this.addTask, {super.key});
+  const AddTask({super.key});
 
   @override
   _AddTaskState createState() {
