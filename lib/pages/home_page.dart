@@ -55,18 +55,10 @@ class _HomeState extends State<Home> {
   // return list;
   // }
 
-  // void addTask(Task task) {
-  //   setState(() {
-  //     // list.items.add(task);
-  //     storage?.setItem(constants.tasksStorageKey, list.toJSONEncodable());
-  //     Provider.of<TasksProvider>(context, listen: false).getListOfTasks();
-  //   });
-  // }
-
   void addTask(Task task) {
     setState(() {
       // list.items.add(task);
-      Provider.of<TasksProvider>(context, listen: false).saveTask();
+      storage?.setItem(constants.tasksStorageKey, list.toJSONEncodable());
       Provider.of<TasksProvider>(context, listen: false).getListOfTasks();
     });
   }
