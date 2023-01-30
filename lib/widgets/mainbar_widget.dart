@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  // final String title;
   final Color backgroundColor;
 
   const MainBar({
     Key? key,
-    required this.title,
+    // required this.title,
     required this.backgroundColor,
   }) : super(key: key);
 
@@ -17,7 +18,7 @@ class MainBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: backgroundColor,
-      title: Text(title),
+      title: Text(AppLocalizations.of(context)!.appName),
       centerTitle: true,
       titleTextStyle: const TextStyle(fontSize: 19.0),
       actions: <Widget>[

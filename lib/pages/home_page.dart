@@ -92,7 +92,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: const MainBar(
         backgroundColor: Colors.indigo,
-        title: 'Flutter Todo V1',
       ),
       body: const DisplayTasks(),
       floatingActionButton: ButtonAddTask(onPressed: _formAddTask),
