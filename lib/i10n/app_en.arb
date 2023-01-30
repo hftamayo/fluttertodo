@@ -1,4 +1,8 @@
 {
-    "appName": "Flutter Tasks",
-    "version": "1.0 English"
+    "appName": "Flutter Tasks 0.0.1 Eng",
+    "newTaskFormTitle": "Add a Task",
+    "taskTitleHint": "Add a title to the new Task",
+    "taskBodyHint": "Add a description (be eloquent)",
+    "AddTaskButton": "Save",
+    "AddTaskToaster": "Task added"
 }
