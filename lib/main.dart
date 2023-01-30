@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: ((context) => TasksProvider()),
       child: MaterialApp(
-        title: AppLocalizations.of(context)!.appName,
+        title: 'Tasks V1',
         localizationsDelegates: const [AppLocalizations.delegate],
         supportedLocales: const [Locale('en', '')],
         theme: ThemeData(
