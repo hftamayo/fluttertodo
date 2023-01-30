@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ButtonAddTask extends StatelessWidget {
   final GestureTapCallback onPressed;
@@ -13,7 +14,7 @@ class ButtonAddTask extends StatelessWidget {
     return FloatingActionButton(
       backgroundColor: Colors.orangeAccent,
       foregroundColor: Colors.white,
-      tooltip: 'Add a Task',
+      tooltip: AppLocalizations.of(context)!.addTaskToaster,
       onPressed: onPressed,
       child: const Icon(Icons.add),
     );
