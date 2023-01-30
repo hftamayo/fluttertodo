@@ -3,6 +3,6 @@
     "newTaskFormTitle": "Add a Task",
     "taskTitleHint": "Add a title to the new Task",
     "taskBodyHint": "Add a description (be eloquent)",
-    "AddTaskButton": "Save",
-    "AddTaskToaster": "Task added"
+    "addTaskButtonText": "Save",
+    "addTaskToasterText": "Task added to the list"
 }
