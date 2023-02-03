@@ -4,5 +4,9 @@
     "taskTitleHint": "Add a title to the new Task",
     "taskBodyHint": "Add a description (be eloquent)",
     "addTaskButtonText": "Save",
-    "addTaskToasterText": "Task added to the list"
+    "addTaskToasterText": "Task added to the list",
+    "noTaskToDisplay": "No Tasks found",
+    "switchSpanish": "Espanol",
+    "switchEnglish": "English",
+    "changeTheme": "Switch to Dark Mode"  
 }
