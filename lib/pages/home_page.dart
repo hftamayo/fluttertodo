@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertodo/models/task_list.dart';
-import 'package:fluttertodo/widgets/mainbar_widget.dart';
 import 'package:fluttertodo/widgets/display_tasks_widget.dart';
 import 'package:fluttertodo/widgets/new_task_button_widget.dart';
 import 'package:fluttertodo/widgets/add_task_form_widget.dart';
@@ -15,10 +13,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late TaskList list = TaskList();
-
   void _formAddTask() {
-    final task = showDialog(
+    showDialog(
       context: context,
       builder: (_) {
         return AlertDialog(
@@ -32,24 +28,11 @@ class _HomeState extends State<Home> {
   }
 
   @override
-  void initState() {
-    Provider.of<TasksProvider>(context, listen: false).loadStore();
-    Provider.of<TasksProvider>(context, listen: false).getListOfTasks();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final TasksProvider tasksProvider = Provider.of<TasksProvider>(context);
     return Scaffold(
-      appBar: const MainBar(
-        backgroundColor: Colors.indigo,
-      ),
-      body: const DisplayTasks(),
+      backgroundColor: Theme.of(context).colorScheme.background,
+      body: DisplayTasks(tasks: tasksProvider.tasks),
       floatingActionButton: ButtonAddTask(onPressed: _formAddTask),
     );
   }
