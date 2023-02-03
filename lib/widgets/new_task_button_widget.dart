@@ -12,8 +12,6 @@ class ButtonAddTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: Colors.orangeAccent,
-      foregroundColor: Colors.white,
       tooltip: AppLocalizations.of(context)!.addTaskToasterText,
       onPressed: onPressed,
       child: const Icon(Icons.add),
