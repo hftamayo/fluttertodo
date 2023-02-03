@@ -8,6 +8,7 @@ class AddTask extends StatefulWidget {
   const AddTask({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AddTaskState createState() {
     return _AddTaskState();
   }
@@ -21,14 +22,12 @@ class _AddTaskState extends State<AddTask> {
   String newBody = '';
 
   void _onSave() {
-    final task = Task(titleController.text, bodyController.text);
+    final task = Task(title: titleController.text, body: bodyController.text);
     Provider.of<TasksProvider>(context, listen: false).addTask(task);
     Navigator.of(context).pop<Task>(task);
     var snackBar = SnackBar(
         content: Text(AppLocalizations.of(context)!.addTaskToasterText));
-    if (task != null) {
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override
