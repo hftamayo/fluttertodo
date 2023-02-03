@@ -1,23 +1,26 @@
-import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
-import 'package:fluttertodo/models/task_list.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:fluttertodo/assets/constants.dart' as constants;
 
 class TasksProvider with ChangeNotifier {
-  late TaskList list = TaskList();
-  List<Task> _tasks = [];
+  late List<Task> tasks;
   LocalStorage? storage;
 
-  UnmodifiableListView<Task> get allTasks => UnmodifiableListView(_tasks);
-
-  Future loadStore() async {
+  Future<List<Task>> get loadStore async {
     if (storage != null) {
-      return list;
+      return tasks;
     }
     storage = LocalStorage(constants.flutterTodoStorageName);
     await storage!.ready;
+
+    List<dynamic>? storedTasks =
+        await storage?.getItem(constants.tasksStorageKey);
+    tasks = storedTasks != null
+        ? storedTasks.map((task) => Task.fromMap(task)).toList()
+        : [];
+    // notifyListeners();
+    return tasks;
   }
 
   @override
@@ -26,26 +29,13 @@ class TasksProvider with ChangeNotifier {
     super.dispose();
   }
 
-  getListOfTasks() async {
-    if (storage != null) {
-      List<dynamic>? storedTasks =
-          await storage?.getItem(constants.tasksStorageKey);
-      if (storedTasks != null) {
-        list.items = List<Task>.from(
-          storedTasks.map(
-            (item) => Task(item['title'], item['body']),
-          ),
-        );
-        notifyListeners();
-        print("number of tasks: ${storedTasks.length}");
-      } else {
-        print("the list is empty");
-      }
+  Future addTask(Task? task) async {
+    if (task == null) {
+      return;
     }
-  }
-
-  void addTask(Task task) {
-    storage?.setItem(constants.tasksStorageKey, list.toJSONEncodable());
+    tasks.add(task);
+    await storage!.setItem(
+        constants.tasksStorageKey, tasks.map((task) => task.toMap()).toList());
     notifyListeners();
   }
 }
