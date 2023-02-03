@@ -1,0 +1,12 @@
+{
+    "appName": "Flutter Tasks 0.0.1 Eng",
+    "newTaskFormTitle": "Add a Task",
+    "taskTitleHint": "Add a title to the new Task",
+    "taskBodyHint": "Add a description (be eloquent)",
+    "addTaskButtonText": "Save",
+    "addTaskToasterText": "Task added to the list",
+    "noTaskToDisplay": "No Tasks found",
+    "switchSpanish": "Espanol",
+    "switchEnglish": "English",
+    "changeTheme": "Switch to Dark Mode"  
+}

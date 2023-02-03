@@ -1,0 +1,12 @@
+{
+    "appName": "Flutter Tareas 0.0.1 Esp",
+    "newTaskFormTitle": "Agregar Tarea",
+    "taskTitleHint": "Titulo de la tarea",
+    "taskBodyHint": "Descripcion de la tarea (se elocuente)",
+    "addTaskButtonText": "Guardar",
+    "addTaskToasterText": "Tarea agregada a la Lista",
+    "noTaskToDisplay": "No hay tareas pendientes",
+    "switchSpanish": "Espanol",
+    "switchEnglish": "English",
+    "changeTheme": "Cambiar a modo oscuro"         
+}
