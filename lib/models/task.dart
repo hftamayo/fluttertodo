@@ -2,14 +2,13 @@ class Task {
   final String title;
   final String body;
 
-  Task(this.title, this.body);
+  Task({this.title = "", this.body = ""});
 
-  toJSONEncodable() {
-    Map<String, dynamic> mappedTask = {};
+  Map toMap() {
+    return {'title': title, 'body': body};
+  }
 
-    mappedTask['title'] = title;
-    mappedTask['body'] = body;
-
-    return mappedTask;
+  static Task fromMap(Map task) {
+    return Task(title: task['title'], body: task['body']);
   }
 }
