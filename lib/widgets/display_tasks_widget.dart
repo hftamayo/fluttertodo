@@ -6,10 +6,7 @@ import 'package:fluttertodo/provider/tasks_provider.dart';
 class DisplayTasks extends StatelessWidget {
   const DisplayTasks({
     Key? key,
-    // required this.list,
   }) : super(key: key);
-
-  // final TaskList list;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +18,6 @@ class DisplayTasks extends StatelessWidget {
           elevation: 8,
           child: ListTile(
             title: Text(
-              // list.items[index].title,
               list.allTasks[index].title,
               style: const TextStyle(
                 fontSize: 22,
@@ -30,7 +26,6 @@ class DisplayTasks extends StatelessWidget {
               ),
             ),
             subtitle: Text(
-              // list.items[index].body,
               list.allTasks[index].body,
               style: const TextStyle(
                 fontSize: 18,
@@ -39,7 +34,6 @@ class DisplayTasks extends StatelessWidget {
           ),
         );
       },
-      // itemCount: list.items.length,
       itemCount: list.allTasks.length,
     );
   }

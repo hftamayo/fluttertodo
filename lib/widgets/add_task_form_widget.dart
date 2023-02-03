@@ -5,8 +5,6 @@ import 'package:fluttertodo/provider/tasks_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddTask extends StatefulWidget {
-  // final Function(Task) addTask;
-  // const AddTask(this.addTask, {super.key});
   const AddTask({super.key});
 
   @override
@@ -16,8 +14,6 @@ class AddTask extends StatefulWidget {
 }
 
 class _AddTaskState extends State<AddTask> {
-  // late TextEditingController titleController;
-  // late TextEditingController bodyController;
   final titleController = TextEditingController();
   final bodyController = TextEditingController();
 
@@ -27,7 +23,6 @@ class _AddTaskState extends State<AddTask> {
   void _onSave() {
     final task = Task(titleController.text, bodyController.text);
     Provider.of<TasksProvider>(context, listen: false).addTask(task);
-    // widget.addTask(task);
     Navigator.of(context).pop<Task>(task);
     var snackBar = SnackBar(
         content: Text(AppLocalizations.of(context)!.addTaskToasterText));
@@ -39,8 +34,6 @@ class _AddTaskState extends State<AddTask> {
   @override
   void initState() {
     super.initState();
-    // titleController = TextEditingController();
-    // bodyController = TextEditingController();
     titleController.addListener(() {
       newTitle = titleController.text;
     });

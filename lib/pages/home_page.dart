@@ -17,48 +17,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late TaskList list = TaskList();
 
-  // Future _loadStore() async {
-  //   if (storage != null) {
-  //     return list;
-  //   }
-  //   storage = LocalStorage(constants.flutterTodoStorageName);
-  //   await storage!.ready;
-  // }
-
-  // getListOfTasks() async {
-  //   if (storage != null) {
-  //     List<dynamic>? storedTasks =
-  //         await storage?.getItem(constants.tasksStorageKey);
-  //     if (storedTasks != null) {
-  //       list.items = List<Task>.from(
-  //         storedTasks.map(
-  //           (item) => Task(item['title'], item['body']),
-  //         ),
-  //       );
-  //       print("number of tasks: ${storedTasks.length}");
-  //     } else {
-  //       print("the list is empty");
-  //     }
-  //   }
-
-  //unstable List<dynamic>? storedTasks =
-  //     await storage?.getItem(constants.tasksStorageKey);
-  // if (storedTasks != null) {
-  //   list = storedTasks.map((task) => TodoList().toJSONEncodable()) as TodoList;
-  // } else {
-  //   list = [] as TodoList;
-  // }
-  // return list;
-  // }
-
-  // void addTask(Task task) {
-  //   setState(() {
-  //     // list.items.add(task);
-  //     storage?.setItem(constants.tasksStorageKey, list.toJSONEncodable());
-  //     Provider.of<TasksProvider>(context, listen: false).getListOfTasks();
-  //   });
-  // }
-
   void _formAddTask() {
     final task = showDialog(
       context: context,
@@ -76,14 +34,12 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     Provider.of<TasksProvider>(context, listen: false).loadStore();
-    // _loadStore();
     Provider.of<TasksProvider>(context, listen: false).getListOfTasks();
     super.initState();
   }
 
   @override
   void dispose() {
-/*     _store.close(); */
     super.dispose();
   }
 

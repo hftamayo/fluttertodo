@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainBar extends StatelessWidget implements PreferredSizeWidget {
-  // final String title;
   final Color backgroundColor;
 
   const MainBar({
     Key? key,
-    // required this.title,
     required this.backgroundColor,
   }) : super(key: key);
 
