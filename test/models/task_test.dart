@@ -17,9 +17,11 @@ void main() {
       expect(fromMapFormatTask.title, title);
       expect(fromMapFormatTask.body, body);
     });
-    // test('to map format', () {
-    //   final Task task = Task(title: title, body: body);
-    //   final List<Task> tasksToMap = tasksToMap.map((task) => task.toMap().toList());
-    // });
+
+    test('task to map format', () {
+      final Task task = Task(title: title, body: body);
+      final Map taskToMap = task.toMap();
+      expect(taskToMap, {'title': title, 'body': body});
+    });
   });
 }
