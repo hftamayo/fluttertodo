@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertodo/widgets/new_task_button_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fluttertodo/widgets/new_task_button_widget.dart';
+import 'package:fluttertodo/services/localizations_injected.dart';
 
 void main() {
   group('new task button', () {
     testWidgets('button render', (WidgetTester tester) async {
-      await tester.pumpWidget(MaterialApp(
-          home: ButtonAddTask(
+      await tester.pumpWidget(const LocalizationsInjected(
+          child: ButtonAddTask(
         onPressed: () {},
       )));
       expect(find.byType(ButtonAddTask), findsOneWidget);
