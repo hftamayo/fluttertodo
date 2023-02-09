@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fluttertodo/widgets/new_task_button_widget.dart';
 import 'package:fluttertodo/services/localizations_injected.dart';
@@ -15,8 +14,8 @@ void main() {
 
     testWidgets('onPress event', (WidgetTester tester) async {
       bool pressed = false;
-      await tester.pumpWidget(MaterialApp(
-          home: ButtonAddTask(
+      await tester.pumpWidget(LocalizationsInjected(
+          child: ButtonAddTask(
         onPressed: () => pressed = true,
       )));
       await tester.tap(find.byType(ButtonAddTask));
