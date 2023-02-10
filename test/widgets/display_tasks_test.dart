@@ -13,5 +13,11 @@ void main() {
           const LocalizationsInjected(child: DisplayTasks(tasks: <Task>[])));
       expect(find.byType(DisplayTasks), findsOneWidget);
     });
+    testWidgets('no tasks display message english',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(
+          const LocalizationsInjected(child: DisplayTasks(tasks: <Task>[])));
+      expect(find.text('No Tasks found'), findsOneWidget);
+    });
   });
 }
