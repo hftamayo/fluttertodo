@@ -16,7 +16,7 @@ void main() {
     });
 
     testWidgets('displaying tasks', (WidgetTester tester) async {
-      tasks = task.toMap().entries.map((e) => e.value).toList();
+      tasks = task.toMap().entries.map((e) => e.value).cast<Task>().toList();
       await tester
           .pumpWidget(LocalizationsInjected(child: DisplayTasks(tasks: tasks)));
       expect(find.byType(DisplayTasks), findsOneWidget);
