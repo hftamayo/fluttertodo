@@ -19,7 +19,13 @@ void main() {
           findsOneWidget);
     });
 
-    testWidgets('switch to spanish on click', (WidgetTester tester) async {});
+    testWidgets('switch to spanish on click', (WidgetTester tester) async {
+      bool pressed = false;
+      await tester.pumpWidget(const LocalizationsInjected(child: MainBar()));
+      await tester.tap(find.widgetWithIcon(MainBar, Icons.brush));
+      await tester.pumpAndSettle();
+      expect(pressed, true);
+    });
   });
 }
 
