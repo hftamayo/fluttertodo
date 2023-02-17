@@ -18,6 +18,8 @@ void main() {
       expect(find.widgetWithIcon(MainBar, Icons.arrow_circle_right),
           findsOneWidget);
     });
+
+    testWidgets('switch to spanish on click', (WidgetTester tester) async {});
   });
 }
 
