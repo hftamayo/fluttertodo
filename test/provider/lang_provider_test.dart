@@ -1,3 +1,18 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:fluttertodo/provider/lang_provider.dart';
+
+/* metodos getter y setters no se recomienda que tengan rutinas de testing */
+
+// void main() {
+//   group('language provider', () {
+//     test('setting a language', () {
+//        LangProvider.languageCode = 'es';
+
+//     });
+//   });
+// }
+
+
 // import 'package:flutter_test/flutter_test.dart';
 // import 'package:provider/provider.dart';
 // import 'package:fluttertodo/provider/lang_provider.dart';
