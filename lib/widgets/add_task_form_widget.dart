@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/task.dart';
 import 'package:provider/provider.dart';
-import 'package:fluttertodo/provider/tasks_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fluttertodo/provider/tasks_provider.dart';
 
 class AddTask extends StatefulWidget {
   const AddTask({super.key});
@@ -54,11 +54,13 @@ class _AddTaskState extends State<AddTask> {
 
   @override
   Widget build(BuildContext context) {
-    Widget buildTextField(String hint, TextEditingController controller,
+    Widget buildTextField(
+        String hint, TextEditingController controller, bool requestFocus,
         {required Function(dynamic value) validator}) {
       return Container(
         margin: const EdgeInsets.all(4),
         child: TextField(
+          autofocus: requestFocus,
           decoration: InputDecoration(
             labelText: hint,
             border: const OutlineInputBorder(
@@ -89,16 +91,14 @@ class _AddTaskState extends State<AddTask> {
                   color: Colors.blueGrey,
                 ),
               ),
-              buildTextField(
-                  AppLocalizations.of(context)!.taskTitleHint, titleController,
-                  validator: (value) {
+              buildTextField(AppLocalizations.of(context)!.taskTitleHint,
+                  titleController, true, validator: (value) {
                 if (value.isEmpty) {
                   return 'Please enter a title';
                 }
               }),
-              buildTextField(
-                  AppLocalizations.of(context)!.taskBodyHint, bodyController,
-                  validator: (value) {
+              buildTextField(AppLocalizations.of(context)!.taskBodyHint,
+                  bodyController, false, validator: (value) {
                 if (value.isEmpty) {
                   return 'Please enter Task\'s body';
                 }
