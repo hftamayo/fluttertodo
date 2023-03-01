@@ -55,12 +55,16 @@ class _AddTaskState extends State<AddTask> {
   @override
   Widget build(BuildContext context) {
     Widget buildTextField(
-        String hint, TextEditingController controller, bool requestFocus,
-        {required Function(dynamic value) validator}) {
+        String hint, TextEditingController controller, bool requestFocus) {
       return Container(
         margin: const EdgeInsets.all(4),
         child: TextField(
           autofocus: requestFocus,
+          validator: (value) {
+            if (value.isEmpty) {
+              return 'Please fill all input fields';
+            }
+          },
           decoration: InputDecoration(
             labelText: hint,
             border: const OutlineInputBorder(
@@ -92,17 +96,9 @@ class _AddTaskState extends State<AddTask> {
                 ),
               ),
               buildTextField(AppLocalizations.of(context)!.taskTitleHint,
-                  titleController, true, validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter a title';
-                }
-              }),
+                  titleController, true),
               buildTextField(AppLocalizations.of(context)!.taskBodyHint,
-                  bodyController, false, validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter Task\'s body';
-                }
-              }),
+                  bodyController, false),
               ElevatedButton(
                 onPressed: _onSave,
                 child: Text(AppLocalizations.of(context)!.addTaskButtonText),
