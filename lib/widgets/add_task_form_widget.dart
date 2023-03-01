@@ -18,16 +18,20 @@ class _AddTaskState extends State<AddTask> {
   final titleController = TextEditingController();
   final bodyController = TextEditingController();
 
+  final _formKey = GlobalKey<FormState>();
+
   String newTitle = '';
   String newBody = '';
 
   void _onSave() {
-    final task = Task(title: titleController.text, body: bodyController.text);
-    Provider.of<TasksProvider>(context, listen: false).addTask(task);
-    Navigator.of(context).pop<Task>(task);
-    var snackBar = SnackBar(
-        content: Text(AppLocalizations.of(context)!.addTaskToasterText));
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    if (_formKey.currentState!.validate()) {
+      final task = Task(title: titleController.text, body: bodyController.text);
+      Provider.of<TasksProvider>(context, listen: false).addTask(task);
+      Navigator.of(context).pop<Task>(task);
+      var snackBar = SnackBar(
+          content: Text(AppLocalizations.of(context)!.addTaskToasterText));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 
   @override
@@ -50,7 +54,8 @@ class _AddTaskState extends State<AddTask> {
 
   @override
   Widget build(BuildContext context) {
-    Widget buildTextField(String hint, TextEditingController controller) {
+    Widget buildTextField(String hint, TextEditingController controller,
+        {required Function(dynamic value) validator}) {
       return Container(
         margin: const EdgeInsets.all(4),
         child: TextField(
@@ -68,6 +73,7 @@ class _AddTaskState extends State<AddTask> {
     }
 
     return Container(
+      key: _formKey,
       padding: const EdgeInsets.all(8),
       height: 350,
       width: 400,
@@ -83,9 +89,19 @@ class _AddTaskState extends State<AddTask> {
               ),
             ),
             buildTextField(
-                AppLocalizations.of(context)!.taskTitleHint, titleController),
+                AppLocalizations.of(context)!.taskTitleHint, titleController,
+                validator: (value) {
+              if (value.isEmpty) {
+                return 'Please enter a title';
+              }
+            }),
             buildTextField(
-                AppLocalizations.of(context)!.taskBodyHint, bodyController),
+                AppLocalizations.of(context)!.taskBodyHint, bodyController,
+                validator: (value) {
+              if (value.isEmpty) {
+                return 'Please enter Task\'s body';
+              }
+            }),
             ElevatedButton(
               onPressed: _onSave,
               child: Text(AppLocalizations.of(context)!.addTaskButtonText),
