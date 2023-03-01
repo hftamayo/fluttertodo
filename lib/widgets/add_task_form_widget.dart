@@ -73,40 +73,42 @@ class _AddTaskState extends State<AddTask> {
     }
 
     return Container(
-      key: _formKey,
       padding: const EdgeInsets.all(8),
       height: 350,
       width: 400,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Text(
-              AppLocalizations.of(context)!.newTaskFormTitle,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 32,
-                color: Colors.blueGrey,
+      child: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Text(
+                AppLocalizations.of(context)!.newTaskFormTitle,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32,
+                  color: Colors.blueGrey,
+                ),
               ),
-            ),
-            buildTextField(
-                AppLocalizations.of(context)!.taskTitleHint, titleController,
-                validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter a title';
-              }
-            }),
-            buildTextField(
-                AppLocalizations.of(context)!.taskBodyHint, bodyController,
-                validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter Task\'s body';
-              }
-            }),
-            ElevatedButton(
-              onPressed: _onSave,
-              child: Text(AppLocalizations.of(context)!.addTaskButtonText),
-            ),
-          ],
+              buildTextField(
+                  AppLocalizations.of(context)!.taskTitleHint, titleController,
+                  validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter a title';
+                }
+              }),
+              buildTextField(
+                  AppLocalizations.of(context)!.taskBodyHint, bodyController,
+                  validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter Task\'s body';
+                }
+              }),
+              ElevatedButton(
+                onPressed: _onSave,
+                child: Text(AppLocalizations.of(context)!.addTaskButtonText),
+              ),
+            ],
+          ),
         ),
       ),
     );
