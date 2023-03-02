@@ -58,10 +58,10 @@ class _AddTaskState extends State<AddTask> {
         String hint, TextEditingController controller, bool requestFocus) {
       return Container(
         margin: const EdgeInsets.all(4),
-        child: TextField(
+        child: TextFormField(
           autofocus: requestFocus,
           validator: (value) {
-            if (value.isEmpty) {
+            if (value!.isEmpty) {
               return 'Please fill all input fields';
             }
           },
